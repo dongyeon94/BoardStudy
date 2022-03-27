@@ -20,5 +20,10 @@ public class Boards {
 
     private LocalDate createDate;
 
+    private String title;
+
+    @Lob
+    private String content;
+
     private int view;
 }
