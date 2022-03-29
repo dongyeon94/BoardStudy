@@ -20,7 +20,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
-            .mvcMatchers("/", "/user/login","/login").permitAll()
+            .mvcMatchers("/", "/user/login", "/user/signup", "/login").permitAll()
             .anyRequest().authenticated()
             .and()
             .csrf().disable();
@@ -29,7 +29,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .loginProcessingUrl("/login")
                 .usernameParameter("loginId")
                 .defaultSuccessUrl("/")
-                .failureUrl("/login?error=true");
+                .failureUrl("/user/login?error=true");
 
         http.logout().logoutSuccessUrl("/").permitAll();
 

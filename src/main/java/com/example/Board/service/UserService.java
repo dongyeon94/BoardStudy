@@ -1,6 +1,7 @@
 package com.example.Board.service;
 
 import com.example.Board.config.UserSession;
+import com.example.Board.domain.Permit;
 import com.example.Board.domain.StatusCode;
 import com.example.Board.domain.Users;
 import lombok.RequiredArgsConstructor;
@@ -24,6 +25,7 @@ public class UserService implements UserDetailsService {
             return StatusCode.DUPLICATED_USER;
         }
         user.setPassword(passwordEncoder.encode(user.getPassword()));
+        user.setPermit(Permit.USER);
         userRepository.save(user);
         return StatusCode.SUCCESS;
     }
@@ -31,9 +33,6 @@ public class UserService implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String loginId) throws UsernameNotFoundException {
         Users users = userRepository.findByEmailOrNickname(loginId, loginId).orElse(null);
-        System.out.println(users.getName());
-        System.out.println(users.getEmail());
-
         return new UserSession(users);
     }
 }
