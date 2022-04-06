@@ -10,40 +10,50 @@
             <div class="container">
                 <div class="row">
                     <div class="col">
-                        <h2>안녕하세요 게시판 입니다.</h2>
+                        <h2>안녕하세요 상세 입니다.</h2>
                     </div>
                 </div>
             </div>
             <div class="container">
                 <div class="row">
-                    <div class="col">
-                        <form action="/board/write" method="get">
-                            <input type="submit" value="글 쓰기">
-                        </form>
-                    </div>
-                </div>
-            </div>
-            <div class="container">
-                <div class="row">
-                    <h2>게시글 내용</h2>
                     <hr>
                     <table class="table">
                         <thead>
                         <tr>
                             <th class="col-md-1" scope="col"></th>
-                            <th class="col-md-1" scope="col">제목</th>
-                            <th class="col-md-3" scope="col">작성자</th>
-                            <th class="col-md-3" scope="col">조회수</th>
-                            <th class="col-md-3" scope="col">날짜</th>
+                            <th class="col-md-6" scope="col"></th>
                         </tr>
                         </thead>
                         <tbody>
-                        <tr th:each="boards, index : ${boards}" th:attr="onclick=|boardViewer('${boards.id}')|">
-                            <th scope="row" th:text="${index.index}"></th>
-                            <td th:text="${boards.title}">제 목</td>
-                            <td th:text="${boards.memberId.nickname}">작 성 자</td>
-                            <td th:text="${boards.view}">조회수</td>
-                            <td th:text="${boards.createDate}">날 짜</td>
+                        <tr>
+                            <th scope="row">글 제목</th>
+                            <td>
+                                <span th:text="${boards.title}"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">글 작성자</th>
+                            <td>
+                                <span th:text="${boards.memberId.nickname}"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">글 내용</th>
+                            <td>
+                                <span th:text="${boards.content}"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">글 조회수</th>
+                            <td>
+                                <span th:text="${boards.view}"></span>
+                            </td>
+                        </tr>
+                        <tr>
+                            <th scope="row">글 작성날짜</th>
+                            <td>
+                                <span th:text="${boards.createDate}"></span>
+                            </td>
                         </tr>
                         </tbody>
                     </table>
@@ -57,7 +67,7 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.min.js" integrity="sha384-QJHtvGhmr9XOIpI6YVutG+2QOK9T+ZnN4kzFN1RtK3zEFEIsxhlmWl5/YESvpZ13" crossorigin="anonymous"></script>
 <script>
 function boardViewer(value) {
-    location.href = "/board/detail/"+value;
+    location.href = "/board/notice/"+value;
 }
 </script>
 </html>

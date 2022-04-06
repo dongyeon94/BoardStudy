@@ -8,6 +8,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import java.time.LocalDate;
+import java.util.List;
 
 @Service
 @RequiredArgsConstructor
@@ -35,5 +36,13 @@ public class BoardService {
 
     public StatusCode updateBoard() {
         return StatusCode.SUCCESS;
+    }
+
+    public List<Boards> allBoards() {
+        return boardRepository.findAll();
+    }
+
+    public Boards boardDetails(Long id) {
+        return boardRepository.findById(id).orElse(null);
     }
 }
