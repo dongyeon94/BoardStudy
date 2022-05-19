@@ -12,10 +12,10 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 
 @SpringBootTest
 @ActiveProfiles("test")
-public class UserServiceTest {
+public class MemberrServiceTest {
 
     @Autowired
-    UserService userService;
+    MemberrService memberrService;
     @Autowired
     private PasswordEncoder passwordEncoder;
 
@@ -25,7 +25,7 @@ public class UserServiceTest {
         users.setEmail("test@naver.com");
         users.setNickname("test");
         users.setPassword("qwer1234");
-        StatusCode code = userService.joinNewNomalUser(users);
+        StatusCode code = memberrService.joinNewNomalUser(users);
 
         assertEquals(StatusCode.SUCCESS, code);
     }
